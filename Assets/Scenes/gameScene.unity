@@ -3117,7 +3117,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 481195948}
-  - component: {fileID: 481195946}
   m_Layer: 0
   m_Name: HMSKitManager
   m_TagString: Untagged
@@ -3125,19 +3124,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &481195946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481195945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0988bc9f39427d447b76bcba8239996f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textStatus: {fileID: 548195786}
 --- !u!4 &481195948
 Transform:
   m_ObjectHideFlags: 0
@@ -5297,7 +5283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 481195946}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AccountDemo, Assembly-CSharp
         m_MethodName: OnAccountLogin
         m_Mode: 1
@@ -6204,7 +6190,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1117941297}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AdsManager, Assembly-CSharp
         m_MethodName: OnAdsInitialize
         m_Mode: 1
@@ -6950,7 +6936,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1117941297}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AdsManager, Assembly-CSharp
         m_MethodName: OnRewardedAdButton
         m_Mode: 1
@@ -7463,7 +7449,6 @@ GameObject:
   - component: {fileID: 1117941295}
   - component: {fileID: 1117941294}
   - component: {fileID: 1117941296}
-  - component: {fileID: 1117941297}
   - component: {fileID: 1117941299}
   m_Layer: 0
   m_Name: GameController
@@ -7563,20 +7548,6 @@ MonoBehaviour:
   winText: {fileID: 464749107}
   loseText: {fileID: 1098418653}
   scoreCanvas: {fileID: 333922424}
---- !u!114 &1117941297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117941290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78fbfd9d3965eb4408a0be0ee1ea1719, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewardedAdPanel: {fileID: 1079656711}
-  nativeAdPanel: {fileID: 0}
 --- !u!114 &1117941299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9493,7 +9464,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 481195946}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AccountDemo, Assembly-CSharp
         m_MethodName: SilentSignIn
         m_Mode: 1
@@ -11564,7 +11535,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 481195946}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AccountDemo, Assembly-CSharp
         m_MethodName: LogOut
         m_Mode: 1
