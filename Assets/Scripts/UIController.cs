@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using HuaweiMobileServices.InAppComment;
+//using HuaweiMobileServices.InAppComment;
 
 public class UIController : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         Debug.Log("ShowInAppComment");
-        InAppComment.ShowInAppComment();
+        //InAppComment.ShowInAppComment();
         
         gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
@@ -96,7 +96,7 @@ public class UIController : MonoBehaviour
             Debug.Log("Store Manager is null!");
         else
         {
-            storeManager.FillProducts();
+            //storeManager.FillProducts();
         }
     }
 
