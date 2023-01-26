@@ -1,9 +1,9 @@
-using HuaweiMobileServices.Id;
-using HuaweiMobileServices.Utils;
-using HuaweiMobileServices.Game;
+//using HuaweiMobileServices.Id;
+//using HuaweiMobileServices.Utils;
+//using HuaweiMobileServices.Game;
 using UnityEngine;
 using UnityEngine.UI;
-using HmsPlugin;
+//using HmsPlugin;
 using System;
 using TMPro;
 
@@ -44,8 +44,8 @@ public class AccountManager : MonoBehaviour
 
     void Start()
     {
-        HMSAccountKitManager.Instance.OnSignInSuccess = OnLoginSuccess;
-        HMSAccountKitManager.Instance.OnSignInFailed = OnLoginFailure;
+        //HMSAccountKitManager.Instance.OnSignInSuccess = OnLoginSuccess;
+        //HMSAccountKitManager.Instance.OnSignInFailed = OnLoginFailure;
 
         AccountKitLog?.Invoke(NOT_LOGGED_IN);
 
@@ -55,39 +55,39 @@ public class AccountManager : MonoBehaviour
     {
         Debug.Log(TAG + "LogIn");
 
-        HMSAccountKitManager.Instance.SignIn();
+        //HMSAccountKitManager.Instance.SignIn();
     }
     public void SilentSignIn()
     {
         Debug.Log(TAG + "SilentSignIn");
 
-        HMSAccountKitManager.Instance.SilentSignIn();
+        //HMSAccountKitManager.Instance.SilentSignIn();
     }
 
     public void LogOut()
     {
         Debug.Log(TAG + "LogOut");
 
-        HMSAccountKitManager.Instance.SignOut();
+        //HMSAccountKitManager.Instance.SignOut();
 
         AccountKitLog?.Invoke(NOT_LOGGED_IN);
     }
 
-    public void OnLoginSuccess(AuthAccount authHuaweiId)
-    {
-        textStatus.SetText("Welcome " + authHuaweiId.DisplayName);
-        AccountKitLog?.Invoke(string.Format(LOGGED_IN, authHuaweiId.DisplayName));
+    //public void OnLoginSuccess(AuthAccount authHuaweiId)
+    //{
+    //    textStatus.SetText("Welcome " + authHuaweiId.DisplayName);
+    //    AccountKitLog?.Invoke(string.Format(LOGGED_IN, authHuaweiId.DisplayName));
 
-        //Init IAP after OnSignInSuccess
-        StoreManager storeManager = gameObject.AddComponent<StoreManager>();
-        storeManager.InitIAP();
+    //    //Init IAP after OnSignInSuccess
+    //    StoreManager storeManager = gameObject.AddComponent<StoreManager>();
+    //    storeManager.InitIAP();
         
 
-        HMSGameServiceManager.Instance.Init();
-    }
+    //    HMSGameServiceManager.Instance.Init();
+    //}
 
-    public void OnLoginFailure(HMSException error)
-    {
-        AccountKitLog?.Invoke(LOGIN_ERROR);
-    }
+    //public void OnLoginFailure(HMSException error)
+    //{
+    //    AccountKitLog?.Invoke(LOGIN_ERROR);
+    //}
 }
