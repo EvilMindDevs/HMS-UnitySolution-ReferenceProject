@@ -3,9 +3,12 @@
 //using HuaweiMobileServices.Utils;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using HuaweiService;
+using HuaweiService.IAP;
+using UnityEngine;
+using Task = HuaweiService.Task;
 //using HuaweiMobileServices.Base;
 
 public class StoreManager : MonoBehaviour

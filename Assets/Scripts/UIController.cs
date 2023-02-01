@@ -8,9 +8,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject gameOverCanvas;
     [SerializeField] private GameObject gameCanvas;
     [SerializeField] private GameObject storeCanvas;
-    [SerializeField] private GameObject nativeAdCanvas;
+    //[SerializeField] private GameObject nativeAdCanvas;
+    //[SerializeField] private GameObject signInCanvas;
    
-    public GameObject nativeAdButton;
+    //public GameObject nativeAdButton;
     
     private void Start()
     {
@@ -20,6 +21,7 @@ public class UIController : MonoBehaviour
         gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         storeCanvas.SetActive(false);
+        //signInCanvas.SetActive(false);
 
         
     }
@@ -28,13 +30,13 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1;
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
-        nativeAdButton.SetActive(false);
+        //nativeAdButton.SetActive(false);
     }
 
    
     public void EndTheGame()
     {
-        nativeAdButton.SetActive(true);
+        //nativeAdButton.SetActive(true);
         Time.timeScale = 0;
         var clickToPop = GameObject.Find(Constants.gameControllerObject).GetComponent<ClickToPop>();
         clickToPop.enabled = false;
@@ -60,8 +62,8 @@ public class UIController : MonoBehaviour
 
 
     }
-
-
+  
+    
     public void OnMainMenu()
     {
         gameCanvas.SetActive(true);
@@ -80,7 +82,7 @@ public class UIController : MonoBehaviour
         storeCanvas.SetActive(true);
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
-        nativeAdCanvas.SetActive(false);
+        //nativeAdCanvas.SetActive(false);
 
         DisplayBoosterCount();
         AfterStoreButton();
