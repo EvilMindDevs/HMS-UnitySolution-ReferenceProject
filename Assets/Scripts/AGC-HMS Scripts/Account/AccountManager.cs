@@ -61,18 +61,9 @@ namespace HuaweiServiceDemo
             //btn.transform.localPosition = new Vector3(10, start - space * index, 0);
             //btn.Init(text, action);
             //index++;
-            Debug.Log("[HMS TEXT]"  + text);
+            
 
-            if (text == "createAuthParam")
-            {
-                Debug.Log("[HMS crt icinde 1 TEXT]" + text);
-                btnCrtAuthParams.GetComponent<TestBtn>().Init(text, action);
-                Debug.Log("[HMS crt icinde 2 TEXT]" + text);
-                btnCrtAuthParams.GetComponent<Button>().onClick.AddListener(action);
-                Debug.Log("[HMS crt icinde 3 TEXT]" + text);
-                Debug.Log("[HMS crt icinde 4 TEXT]" + text);
-            }
-            else if (text == "Signin")
+            if (text == "Signin")
             {
                 btnSignIn.GetComponent<TestBtn>().Init(text, action);
                 btnSignIn.GetComponent<Button>().onClick.AddListener(action);

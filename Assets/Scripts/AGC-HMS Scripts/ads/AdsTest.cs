@@ -6,16 +6,17 @@ namespace HuaweiServiceDemo
 {
     public class AdsTest:Test<AdsTest>
     {
+        
         public override void RegisterEvent(TestEvent registerEvent){
-            registerEvent("load image ads " + Screen.width,LoadImageAds);
-            registerEvent("load video ads " + Screen.height,LoadVideoAds);
-            registerEvent("load reward ads",LoadRewardAds);
-            registerEvent("set consent personal",() => SetConsentStatus(true));
-            registerEvent("set consent non personal", ()=> SetConsentStatus(false));
-            registerEvent("consent",checkConsentStatus);
-            registerEvent("set RequestOptions NonPersonalizedAd",setRequestOptionsNonPersonalizedAd);
-            registerEvent("set request options consent",setRequestOptionsConsent);
-            registerEvent("set AdProvider",SetAdProvider);
+            //registerEvent("load image ads " + Screen.width,LoadImageAds);
+            //registerEvent("load video ads " + Screen.height,LoadVideoAds);
+            //registerEvent("load reward ads",LoadRewardAds);
+            //registerEvent("set consent personal",() => SetConsentStatus(true));
+            //registerEvent("set consent non personal", ()=> SetConsentStatus(false));
+            //registerEvent("consent",CheckConsentStatus);
+            //registerEvent("set RequestOptions NonPersonalizedAd",SetRequestOptionsNonPersonalizedAd);
+            //registerEvent("set request options consent", SetRequestOptionsConsent);
+            //registerEvent("set AdProvider",SetAdProvider);
         }
         public void SetAdProvider()
         {
@@ -66,7 +67,7 @@ namespace HuaweiServiceDemo
             Util.showToast($"set consent status as {consentStatus}");
         }
         
-        public void checkConsentStatus()
+        public void CheckConsentStatus()
         {
             Consent consentInfo = Consent.getInstance(new Context());
             string testDeviceId = consentInfo.getTestDeviceId();
@@ -76,7 +77,7 @@ namespace HuaweiServiceDemo
             TestTip.Inst.ShowText("Get test device id is "+ testDeviceId);
         }
 
-        public void setRequestOptionsNonPersonalizedAd()
+        public void SetRequestOptionsNonPersonalizedAd()
         {
             RequestOptions reqOptions =  HwAds.getRequestOptions()
                 .toBuilder()
@@ -87,7 +88,7 @@ namespace HuaweiServiceDemo
             
             TestTip.Inst.ShowText("RequestOptions NonPersonalizedAd:"+ HwAds.getRequestOptions().getNonPersonalizedAd());
         }
-        public void setRequestOptionsConsent()
+        public void SetRequestOptionsConsent()
         {
             var builder = new RequestOptions.Builder();
             var requestOpetion = builder.setConsent("testConsent").setRequestLocation(new Boolean(false)).build();

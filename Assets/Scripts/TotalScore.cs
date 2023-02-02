@@ -1,44 +1,47 @@
 using UnityEngine;
 using TMPro;
 
-public class TotalScore : MonoBehaviour
+namespace HuaweiServiceDemo
 {
-    [Header("UI Elements")]
-    [SerializeField] private GameObject winText;
-    [SerializeField] private GameObject loseText;
-    [SerializeField] private GameObject scoreCanvas;
-    private TextMeshProUGUI scoreValueText;
-
-    [Header("Game Constants")]
-    //private const int WIN_SCORE = 200;
-    private const int LOSE_SCORE = 0;
-
-    private int finalScoreOfAll;
-
-    private void Start()
+    public class TotalScore : MonoBehaviour
     {
-        scoreValueText = GameObject.Find("ScoreValue").GetComponent<TextMeshProUGUI>();
-    }
+        [Header("UI Elements")]
+        [SerializeField] private GameObject winText;
+        [SerializeField] private GameObject loseText;
+        [SerializeField] private GameObject scoreCanvas;
+        private TextMeshProUGUI scoreValueText;
 
-    public void GetFinalScore(int thisScore)
-    {
-        finalScoreOfAll += thisScore;
-        scoreValueText.SetText(finalScoreOfAll.ToString());
+        [Header("Game Constants")]
+        //private const int WIN_SCORE = 200;
+        private const int LOSE_SCORE = 0;
 
-        if (finalScoreOfAll < LOSE_SCORE)
+        private int finalScoreOfAll;
+
+        private void Start()
         {
-            scoreCanvas.SetActive(false);
-            loseText.SetActive(true);
-            UIController uiController = FindObjectOfType<UIController>();
-            uiController.EndTheGame();
+            scoreValueText = GameObject.Find("ScoreValue").GetComponent<TextMeshProUGUI>();
         }
-        
-    }
 
-    public void DoubleScore()
-    {
-        finalScoreOfAll *= 2;
-        scoreValueText.SetText(finalScoreOfAll.ToString());
-        Debug.Log("final score has doubled" + finalScoreOfAll);
+        public void GetFinalScore(int thisScore)
+        {
+            finalScoreOfAll += thisScore;
+            scoreValueText.SetText(finalScoreOfAll.ToString());
+
+            if (finalScoreOfAll < LOSE_SCORE)
+            {
+                scoreCanvas.SetActive(false);
+                loseText.SetActive(true);
+                UIController uiController = FindObjectOfType<UIController>();
+                uiController.EndTheGame();
+            }
+
+        }
+
+        public void DoubleScore()
+        {
+            finalScoreOfAll *= 2;
+            scoreValueText.SetText(finalScoreOfAll.ToString());
+            Debug.Log("final score has doubled" + finalScoreOfAll);
+        }
     }
 }

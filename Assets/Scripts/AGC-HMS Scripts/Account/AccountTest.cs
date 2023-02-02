@@ -25,7 +25,7 @@ namespace HuaweiServiceDemo
         public override void RegisterEvent(TestEvent registerEvent)
         {
             init();
-            registerEvent("createAuthParam", createAuthParam);
+            //registerEvent("createAuthParam", CreateAuthParam);
             registerEvent("Signin", Signin);
             //registerEvent("getInfo", getInfo);
             //registerEvent("cancelAuthorization", cancelAuthorization);
@@ -85,12 +85,13 @@ namespace HuaweiServiceDemo
                 }
             }
         }
-        public void createAuthParam()
+        public void CreateAuthParam()
         {
             mAuthParam = new AccountAuthParamsHelper().setAccessToken().setUid().setAuthorizationCode().setEmail().setId().setIdToken().setProfile().setCarrierId().createParams();
             mAuthManager=AccountAuthManager.getService(new UnityPlayerActivity(), mAuthParam);
             AccountActivity.setAuthParam(mAuthParam);
             TestTip.Inst.ShowText($"helper createAuthParam {mAuthParam}");
+            
         }
 
         public void manualCreateParam()
@@ -117,6 +118,8 @@ namespace HuaweiServiceDemo
 
         public void Signin()
         {
+            CreateAuthParam();
+            Debug.Log("[HMS AUTH PARAM CREATED.");
             AccountActivity.setIntent("signIn");
             AccountActivity.setRequestCode(Constant.REQUEST_SIGN_IN_LOGIN);
             AccountActivity.start(new UnityPlayerActivity());

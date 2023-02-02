@@ -12,7 +12,7 @@ namespace HuaweiServiceDemo
         public ProductInfo info;
         public override void RegisterEvent(TestEvent registerEvent)
         {
-            init();
+            Init();
             registerEvent("obtain Consumables Product Info", () => ObtainProductInfo("Consumables"));
             registerEvent("obtain Subscription Product Info", () => ObtainProductInfo("Subscription"));
             registerEvent("is env ready", IsEnvReady);
@@ -26,7 +26,7 @@ namespace HuaweiServiceDemo
             registerEvent("obtain Consumables Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Consumables"));
             registerEvent("obtain Subscription Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Subscription"));
         }
-        public void init(){
+        public void Init(){
             var callback = new IapCallback();
             callback.setCallback(OnActivityResultCallback);
             IapActivity.setCallback(callback);
@@ -225,7 +225,7 @@ namespace HuaweiServiceDemo
             Task task = Iap.getIapClient(activity).isEnvReady(true);
             task.addOnSuccessListener (new HmsSuccessListener<IsEnvReadyResult> ((result) =>
             {
-                result.setCountry("CN");
+                result.setCountry("TR");
                 result.setCarrierId("1SDGTNJUI97806NJJHGN");
                 TestTip.Inst.ShowText ("AppTouch scenarios");
             })).addOnFailureListener (new HmsFailureListener ((exception) => {

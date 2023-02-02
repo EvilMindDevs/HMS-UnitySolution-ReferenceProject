@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "L2NDU19A16000894",
         "name": "com.HilisCompany.Reference_AssetStore.huawei",
-        "processId": 7100,
+        "processId": 25820,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -40,30 +40,6 @@
         },
         {
             "deviceId": "L2NDU19A16000894",
-            "name": "com.huawei.android.launcher",
-            "processId": 2487,
-            "exited": false
-        },
-        {
-            "deviceId": "L2NDU19A16000894",
-            "name": "com.HilisCompany.Reference_AssetStore.huawei",
-            "processId": 1830,
-            "exited": true
-        },
-        {
-            "deviceId": "L2NDU19A16000894",
-            "name": "com.HilisCompany.Reference_AssetStore.huawei",
-            "processId": 4318,
-            "exited": true
-        },
-        {
-            "deviceId": "L2NDU19A16000894",
-            "name": "com.HilisCompany.Reference_AssetStore.huawei",
-            "processId": 5382,
-            "exited": true
-        },
-        {
-            "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.Reference_AssetStore.huawei",
             "processId": 6372,
             "exited": true
@@ -72,12 +48,24 @@
             "deviceId": "L2NDU19A16000894",
             "name": "com.huawei.hwid.container2",
             "processId": 32358,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.Reference_AssetStore.huawei",
             "processId": 7100,
+            "exited": true
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.HilisCompany.Reference_AssetStore.huawei",
+            "processId": 19210,
+            "exited": true
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.HilisCompany.Reference_AssetStore.huawei",
+            "processId": 25820,
             "exited": false
         }
     ],
