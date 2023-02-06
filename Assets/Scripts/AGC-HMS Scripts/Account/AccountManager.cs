@@ -18,10 +18,9 @@ namespace HuaweiServiceDemo
         //public bool CrashEnabled;
         //public bool DatabaseEnabled;
         public bool AccountEnabled;
-        public bool IAPEnabled;
-        public bool AdsEnabled;
+       
 
-        public Transform btnParent;
+        //public Transform btnParent;
         public GameObject btnCrtAuthParams;
         public GameObject btnSignIn;
         public GameObject btnSignOut;
@@ -44,14 +43,7 @@ namespace HuaweiServiceDemo
             {
                 AccountTest.GetInstance().RegisterEvent(RegistEvent);
             }
-            if (IAPEnabled)
-            {
-                IAPTest.GetInstance().RegisterEvent(RegistEvent);
-            }
-            if (AdsEnabled)
-            {
-                AdsTest.GetInstance().RegisterEvent(RegistEvent);
-            }
+          
         }
 
         public void RegistEvent(string text, UnityAction action)

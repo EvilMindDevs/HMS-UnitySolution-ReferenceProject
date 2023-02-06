@@ -9,23 +9,15 @@ namespace HuaweiServiceDemo
 {
     public class IAPManager : MonoBehaviour
     {
-        public Transform btnParent;
-        public GameObject btnCrtAuthParams;
-        public GameObject btnSignIn;
-        public GameObject btnSignOut;
-        public TestTip testTip;
+        //public Transform btnParent;
+        public GameObject noAds;
+        public GameObject booster;
+        public GameObject pinkColor;
 
 
-        private int index = 1;
-        public int start = 0;
-        public int space = 40;
-
-        public void IAPInitial()
+        public void Initial()
         {
-            
             IAPTest.GetInstance().RegisterEvent(RegistEvent);
-            
-            
         }
 
         public void RegistEvent(string text, UnityAction action)
@@ -37,30 +29,32 @@ namespace HuaweiServiceDemo
             //index++;
             Debug.Log("[HMS TEXT]" + text);
 
-            if (text == "createAuthParam")
-            {
-                Debug.Log("[HMS crt icinde 1 TEXT]" + text);
-                btnCrtAuthParams.GetComponent<TestBtn>().Init(text, action);
-                Debug.Log("[HMS crt icinde 2 TEXT]" + text);
-                btnCrtAuthParams.GetComponent<Button>().onClick.AddListener(action);
-                Debug.Log("[HMS crt icinde 3 TEXT]" + text);
-                Debug.Log("[HMS crt icinde 4 TEXT]" + text);
-            }
-            else if (text == "Signin")
-            {
-                btnSignIn.GetComponent<TestBtn>().Init(text, action);
-                btnSignIn.GetComponent<Button>().onClick.AddListener(action);
-            }
-            else if (text == "signOut")
-            {
-                btnSignOut.GetComponent<TestBtn>().Init(text, action);
-                btnSignOut.GetComponent<Button>().onClick.AddListener(action);
-            }
-            else
-            {
-                Debug.Log("[HMS ELSE TEXT]" + text);
-            }
+            //if (text == "obtain Consumables Product Info")
+            //{
+            //    Debug.Log("[HMS crt icinde 1 TEXT]" + text);
+            //    obtainConsumablesProductInfo.GetComponent<TestBtn>().Init(text, action);
+            //    Debug.Log("[HMS crt icinde 2 TEXT]" + text);
+            //    obtainConsumablesProductInfo.GetComponent<Button>().onClick.AddListener(action);
+            //    Debug.Log("[HMS crt icinde 3 TEXT]" + text);
+            //    Debug.Log("[HMS crt icinde 4 TEXT]" + text);
+            //}
+            //else if (text == "obtain Subscription Product Info")
+            //{
+            //    obtainSubscriptionProductInfo.GetComponent<TestBtn>().Init(text, action);
+            //    obtainSubscriptionProductInfo.GetComponent<Button>().onClick.AddListener(action);
+            //}
+            //else if (text == "is env ready")
+            //{
+            //    isenvready.GetComponent<TestBtn>().Init(text, action);
+            //    isenvready.GetComponent<Button>().onClick.AddListener(action);
+            //}
+           
+            //else
+            //{
+            //    Debug.Log("[HMS ELSE TEXT]" + text);
+            //}
         }
+       
 
     }
 }

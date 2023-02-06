@@ -2,6 +2,7 @@
 using HuaweiService;
 using HuaweiService.IAP;
 using UnityEngine;
+using TMPro;
 using Task = HuaweiService.Task;
 
 namespace HuaweiServiceDemo
@@ -9,22 +10,25 @@ namespace HuaweiServiceDemo
     public class IAPTest : Test<IAPTest>
     {
         public List productInfoList;
+        public GameObject[] products;
         public ProductInfo info;
+        
         public override void RegisterEvent(TestEvent registerEvent)
         {
             Init();
-            registerEvent("obtain Consumables Product Info", () => ObtainProductInfo("Consumables"));
-            registerEvent("obtain Subscription Product Info", () => ObtainProductInfo("Subscription"));
+            Debug.Log("[HMS regist event has called");
+            //registerEvent("obtain Consumables Product Info", () => ObtainProductInfo("Consumables"));
+            //registerEvent("obtain Subscription Product Info", () => ObtainProductInfo("Subscription"));
             registerEvent("is env ready", IsEnvReady);
-            registerEvent("is env ready true", IsEnvReadyTrue);
-            registerEvent("create Consumables Purchase Intent", () => CreatePurchaseIntent("Consumables"));
-            registerEvent("create Non-Consumables Purchase Intent", () => CreatePurchaseIntent("Non-Consumables"));
-            registerEvent("create Subscription Purchase Intent", () => CreatePurchaseIntent("Subscription"));
-            registerEvent("consumables with price", () => CreatePurchaseIntentWithPrice("Consumables"));
-            registerEvent("non-consumables with price", () => CreatePurchaseIntentWithPrice("Non-Consumables"));
-            registerEvent("consume OwnedPurchase", ObtainOwnedPurchases);
-            registerEvent("obtain Consumables Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Consumables"));
-            registerEvent("obtain Subscription Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Subscription"));
+            //registerEvent("is env ready true", IsEnvReadyTrue);
+            //registerEvent("create Consumables Purchase Intent", () => CreatePurchaseIntent("Consumables"));
+            //registerEvent("create Non-Consumables Purchase Intent", () => CreatePurchaseIntent("Non-Consumables"));
+            //registerEvent("create Subscription Purchase Intent", () => CreatePurchaseIntent("Subscription"));
+            //registerEvent("consumables with price", () => CreatePurchaseIntentWithPrice("Consumables"));
+            //registerEvent("non-consumables with price", () => CreatePurchaseIntentWithPrice("Non-Consumables"));
+            //registerEvent("consume OwnedPurchase", ObtainOwnedPurchases);
+            //registerEvent("obtain Consumables Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Consumables"));
+            //registerEvent("obtain Subscription Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Subscription"));
         }
         public void Init(){
             var callback = new IapCallback();
@@ -185,6 +189,14 @@ namespace HuaweiServiceDemo
         }
         public void ObtainProductInfo(string type)
         {
+            GameObject product1 = GameObject.Find("Product1");
+            GameObject product2 = GameObject.Find("Product2");
+            GameObject product3 = GameObject.Find("Product3");
+
+            products[0] = product1;
+            products[1] = product2;
+            products[2] = product3;
+
             List productIdList = new List();
             ProductInfoReq req = new ProductInfoReq();
             if (type == "Consumables"){
@@ -200,23 +212,32 @@ namespace HuaweiServiceDemo
             task.addOnSuccessListener (new HmsSuccessListener<ProductInfoResult> ((result) =>
             {
                 productInfoList = result.getProductInfoList();
-                info = HmsClassHelper.ConvertObject<ProductInfo>(productInfoList.get(0));
-                TestTip.Inst.ShowText ("productList is " + productInfoList);
-                TestTip.Inst.ShowText ("productList is " + info);
-                TestTip.Inst.ShowText ("product info currency is " + info.getCurrency());
-                TestTip.Inst.ShowText ("product info micros price is " + info.getMicrosPrice());
-                TestTip.Inst.ShowText ("product info getOfferUsedStatus is " + info.getOfferUsedStatus());
-                TestTip.Inst.ShowText ("product info getOriginalLocalPrice is " + info.getOriginalLocalPrice());
-                TestTip.Inst.ShowText ("product info getOriginalMicroPrice is " + info.getOriginalMicroPrice());
-                TestTip.Inst.ShowText ("product info price is " + info.getPrice());
-                TestTip.Inst.ShowText ("product info price type is " + info.getPriceType());
-                TestTip.Inst.ShowText ("product info product desc is " + info.getProductDesc());
-                TestTip.Inst.ShowText ("product info product id is " + info.getProductId());
-                TestTip.Inst.ShowText ("product info product name is " + info.getProductName());
-                TestTip.Inst.ShowText ("product info status is " + info.getStatus());
-                TestTip.Inst.ShowText ("product info SubSpecialPriceMicros is " + info.getSubSpecialPriceMicros());
+                for (int i = 0; i <3; i++)
+                {
+                    info = HmsClassHelper.ConvertObject<ProductInfo>(productInfoList.get(i));
+                    products[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = info.getProductName().ToString();
+                    products[i].transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = info.getProductDesc().ToString();
+                    products[i].transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = info.getPrice().ToString() + info.getCurrency().ToString();
+                    products[i].transform.GetChild(4).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = info.getProductName().ToString();
+
+                    //("productList is " + productInfoList);
+                    //("productList is " + info);
+                    //("product info currency is " + info.getCurrency());
+                    //("product info micros price is " + info.getMicrosPrice());
+                    //("product info getOfferUsedStatus is " + info.getOfferUsedStatus());
+                    //("product info getOriginalLocalPrice is " + info.getOriginalLocalPrice());
+                    //("product info getOriginalMicroPrice is " + info.getOriginalMicroPrice());
+                    //("product info price is " + info.getPrice());
+                    //("product info price type is " + info.getPriceType());
+                    //("product info product desc is " + info.getProductDesc());
+                    //("product info product id is " + info.getProductId());
+                    //("product info product name is " + info.getProductName());
+                    //("product info status is " + info.getStatus());
+                    //("product info SubSpecialPriceMicros is " + info.getSubSpecialPriceMicros());
+                }
+
             })).addOnFailureListener (new HmsFailureListener ((exception) => {
-                TestTip.Inst.ShowText ("exception msg is " + exception.toString ());
+                Debug.Log("exception msg is " + exception.toString ());
             }));
         }
         public void IsEnvReadyTrue()
@@ -227,9 +248,9 @@ namespace HuaweiServiceDemo
             {
                 result.setCountry("TR");
                 result.setCarrierId("1SDGTNJUI97806NJJHGN");
-                TestTip.Inst.ShowText ("AppTouch scenarios");
+                Debug.Log("[HMS AppTouch scenarios");
             })).addOnFailureListener (new HmsFailureListener ((exception) => {
-                TestTip.Inst.ShowText ("exception msg is " + exception.toString ());
+                Debug.Log("[HMS exception msg is " + exception.toString ());
             }));
         }
         public void IsEnvReady()
@@ -240,19 +261,25 @@ namespace HuaweiServiceDemo
             {
                 if (result.getCarrierId() == null && result.getCountry() == null)
                 {
-                    TestTip.Inst.ShowText ("Non-AppTouch scenarios");
+                   Debug.Log("[HMS Non-AppTouch scenarios");
+                   IsEnvReadyTrue();
                 }
                 else
                 {
-                    TestTip.Inst.ShowText ("AppTouch scenarios");
+                    Debug.Log("[HMS AppTouch scenarios");
                 }
                 int flag = result.getAccountFlag();
-                TestTip.Inst.ShowText ("account flag is " + flag);
+                Debug.Log("[HMS account flag is " + flag);
                 int returnCode = result.getReturnCode();
-                TestTip.Inst.ShowText ("return code is " + returnCode);
+                Debug.Log("[HMS return code is " + returnCode);
+
+               
+
             })).addOnFailureListener (new HmsFailureListener ((exception) => {
                 TestTip.Inst.ShowText ("exception msg is " + exception.toString ());
             }));
+
+            
         }
     }
 }

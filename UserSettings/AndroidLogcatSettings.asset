@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "L2NDU19A16000894",
         "name": "com.HilisCompany.Reference_AssetStore.huawei",
-        "processId": 25820,
+        "processId": 7676,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -41,31 +41,37 @@
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.Reference_AssetStore.huawei",
-            "processId": 6372,
-            "exited": true
-        },
-        {
-            "deviceId": "L2NDU19A16000894",
-            "name": "com.huawei.hwid.container2",
-            "processId": 32358,
+            "processId": 26654,
             "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.Reference_AssetStore.huawei",
-            "processId": 7100,
+            "processId": 27848,
+            "exited": true
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.huawei.hwid",
+            "processId": 5098,
+            "exited": false
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.HilisCompany.Reference_AssetStore.huawei",
+            "processId": 4264,
             "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.Reference_AssetStore.huawei",
-            "processId": 19210,
+            "processId": 6234,
             "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.Reference_AssetStore.huawei",
-            "processId": 25820,
+            "processId": 7676,
             "exited": false
         }
     ],

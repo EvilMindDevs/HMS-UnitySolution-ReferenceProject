@@ -88,8 +88,11 @@ namespace HuaweiServiceDemo
             gameOverCanvas.SetActive(false);
             //nativeAdCanvas.SetActive(false);
 
+            
+
+           
             DisplayBoosterCount();
-            AfterStoreButton();
+            //AfterStoreButton();
 
         }
 
