@@ -17,18 +17,8 @@ namespace HuaweiServiceDemo
         {
             Init();
             Debug.Log("[HMS regist event has called");
-            //registerEvent("obtain Consumables Product Info", () => ObtainProductInfo("Consumables"));
-            //registerEvent("obtain Subscription Product Info", () => ObtainProductInfo("Subscription"));
             registerEvent("is env ready", IsEnvReady);
-            //registerEvent("is env ready true", IsEnvReadyTrue);
-            //registerEvent("create Consumables Purchase Intent", () => CreatePurchaseIntent("Consumables"));
-            //registerEvent("create Non-Consumables Purchase Intent", () => CreatePurchaseIntent("Non-Consumables"));
-            //registerEvent("create Subscription Purchase Intent", () => CreatePurchaseIntent("Subscription"));
-            //registerEvent("consumables with price", () => CreatePurchaseIntentWithPrice("Consumables"));
-            //registerEvent("non-consumables with price", () => CreatePurchaseIntentWithPrice("Non-Consumables"));
-            //registerEvent("consume OwnedPurchase", ObtainOwnedPurchases);
-            //registerEvent("obtain Consumables Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Consumables"));
-            //registerEvent("obtain Subscription Owned Purchase Record", () => ObtainOwnedPurchaseRecord("Subscription"));
+           
         }
         public void Init(){
             var callback = new IapCallback();
@@ -39,17 +29,17 @@ namespace HuaweiServiceDemo
         {
             if (type == "Consumables"){
                 IapActivity.setIntent("Consumables");
-                IapActivity.setConProductId("test12");
+                IapActivity.setConProductId("Booster");
                 IapActivity.setPriceType(0);
                 IapActivity.start(new UnityPlayerActivity());
             }else if(type == "Non-Consumables"){
                 IapActivity.setIntent("Non-Consumables");
-                IapActivity.setConProductId("test13");
+                IapActivity.setConProductId("PinkColor");
                 IapActivity.setPriceType(1);
                 IapActivity.start(new UnityPlayerActivity());
             }else{
                 IapActivity.setIntent("Subscription");
-                IapActivity.setConProductId("test03");
+                IapActivity.setConProductId("NoAds");
                 IapActivity.setPriceType(2);
                 IapActivity.start(new UnityPlayerActivity());
             }
@@ -72,8 +62,8 @@ namespace HuaweiServiceDemo
             UnityPlayerActivity activity = new UnityPlayerActivity();
             Task task = Iap.getIapClient(activity).createPurchaseIntentWithPrice(req); 
             task.addOnSuccessListener (new HmsSuccessListener<PurchaseIntentResult> ((result) =>{
-                TestTip.Inst.ShowText ("get payment data: " + result.getPaymentData());
-                TestTip.Inst.ShowText ("get payment signature: " + result.getPaymentSignature());
+                Debug.Log("get payment data: " + result.getPaymentData());
+                Debug.Log("get payment signature: " + result.getPaymentSignature());
                 Status status = result.getStatus();
                 if (status.hasResolution())
                 {
@@ -81,11 +71,11 @@ namespace HuaweiServiceDemo
                 }
                 int returnCode = result.getReturnCode();
                 if (returnCode == OrderStatusCode.ORDER_STATE_SUCCESS){
-                    TestTip.Inst.ShowText ("goods purchased successfully!");
+                    Debug.Log("goods purchased successfully!");
                 }
             })).addOnFailureListener (new HmsFailureListener ((exception) => {
                 IapApiException apiException = HmsClassHelper.ConvertObject<IapApiException>(exception.obj);
-                TestTip.Inst.ShowText ("exception msg is " + exception.toString ());
+                Debug.Log("exception msg is " + exception.toString ());
                 int returnCode = apiException.getStatusCode();
                 switch (returnCode) { 
                 case OrderStatusCode.ORDER_HWID_NOT_LOGIN: 
@@ -112,11 +102,11 @@ namespace HuaweiServiceDemo
             Task task = Iap.getIapClient(new UnityPlayerActivity()).obtainOwnedPurchaseRecord(req);
             task.addOnSuccessListener (new HmsSuccessListener<OwnedPurchasesResult> ((result) =>{
                 if (result.getReturnCode() == 0){
-                    TestTip.Inst.ShowText ("obtain owned purchase record successfully!");
+                    Debug.Log("obtain owned purchase record successfully!");
                 }
-                TestTip.Inst.ShowText ("purchase history is: "+result.getItemList());
+                Debug.Log("purchase history is: "+result.getItemList());
             })).addOnFailureListener (new HmsFailureListener ((exception) => {
-                    TestTip.Inst.ShowText ("exception msg is " + exception.toString ());
+                Debug.Log("exception msg is " + exception.toString ());
             }));
         }
         public void ObtainOwnedPurchases()
@@ -130,7 +120,7 @@ namespace HuaweiServiceDemo
                 if (result != null && result.getInAppPurchaseDataList() != null)
                 {
                     List inAppPurchaseData = result.getInAppPurchaseDataList();
-                    TestTip.Inst.ShowText ("owned purchases result is " + inAppPurchaseData);
+                    Debug.Log("owned purchases result is " + inAppPurchaseData);
                     ConsumeOwnedPurchaseReq req = new ConsumeOwnedPurchaseReq();
                     string purchaseToken = "";
                     string inAppPurchaseDataStr = HmsClassHelper.ConvertObject<InAppPurchaseData>(inAppPurchaseData.get(0)).ToString();
@@ -138,20 +128,20 @@ namespace HuaweiServiceDemo
                     purchaseToken = inAppPurchaseDataBean.getPurchaseToken();
                     req.setPurchaseToken(purchaseToken);
                     Activity activity = new UnityPlayerActivity();
-                    TestTip.Inst.ShowText ("inAppPurchaseDataBean is " + inAppPurchaseDataBean.ToString());
-                    TestTip.Inst.ShowText ("purchaseToken is "+ purchaseToken);
+                    Debug.Log("inAppPurchaseDataBean is " + inAppPurchaseDataBean.ToString());
+                    Debug.Log("purchaseToken is "+ purchaseToken);
                     Task task = Iap.getIapClient(activity).consumeOwnedPurchase(req);
                     task.addOnSuccessListener (new HmsSuccessListener<ConsumeOwnedPurchaseResult> ((result) =>{
                         if (result.getReturnCode() == 0){
-                            TestTip.Inst.ShowText ("consumed goods successfully!");
+                            Debug.Log("consumed goods successfully!");
                         }
-                        TestTip.Inst.ShowText ("get signatureAlgorithm is "+result.getSignatureAlgorithm());
+                        Debug.Log("get signatureAlgorithm is "+result.getSignatureAlgorithm());
                     })).addOnFailureListener (new HmsFailureListener ((exception) => {
-                        TestTip.Inst.ShowText ("exception msg is " + exception.toString ());
+                        Debug.Log("exception msg is " + exception.toString ());
                     }));
                 }
             })).addOnFailureListener (new HmsFailureListener ((exception) => {
-                TestTip.Inst.ShowText ("exception msg is " + exception.toString ());
+                Debug.Log("exception msg is " + exception.toString ());
             }));
         }
         public void OnActivityResultCallback(int requestCode, int resultCode,AndroidJavaObject obj)
@@ -161,21 +151,21 @@ namespace HuaweiServiceDemo
             data.obj = obj;
             if (requestCode == 6666) {
                 if (data == null) {
-                    TestTip.Inst.ShowText ("data is null");
+                    Debug.Log("data is null");
                     return;
                 }
                 Activity activity = new UnityPlayerActivity();
                 PurchaseResultInfo purchaseResultInfo = Iap.getIapClient(activity).parsePurchaseResultInfoFromIntent(data);
                 switch(purchaseResultInfo.getReturnCode()) {
                     case OrderStatusCode.ORDER_STATE_CANCEL:
-                        TestTip.Inst.ShowText ("order cancel");
+                        Debug.Log("order cancel");
                         break;
                     case OrderStatusCode.ORDER_STATE_FAILED:
                     case OrderStatusCode.ORDER_PRODUCT_OWNED:
-                        TestTip.Inst.ShowText ("product owned");
+                        Debug.Log("product owned");
                         break;
                     case OrderStatusCode.ORDER_STATE_SUCCESS:
-                        TestTip.Inst.ShowText ("order success!");
+                        Debug.Log("order success!");
                         string inAppPurchaseData = purchaseResultInfo.getInAppPurchaseData();
                         string inAppPurchaseDataSignature = purchaseResultInfo.getInAppDataSignature();
                         TestTip.Inst.ShowText ("inAppPurchase data signature is " + inAppPurchaseDataSignature);
@@ -242,6 +232,7 @@ namespace HuaweiServiceDemo
         }
         public void IsEnvReadyTrue()
         {
+            Debug.Log("[HMS IsEnvReadyTrue() has been called");
             Activity activity = new UnityPlayerActivity();
             Task task = Iap.getIapClient(activity).isEnvReady(true);
             task.addOnSuccessListener (new HmsSuccessListener<IsEnvReadyResult> ((result) =>
@@ -255,6 +246,7 @@ namespace HuaweiServiceDemo
         }
         public void IsEnvReady()
         {
+            Debug.Log("[HMS IsEnvReady() has been called");
             Activity activity = new UnityPlayerActivity();
             Task task = Iap.getIapClient(activity).isEnvReady();
             task.addOnSuccessListener (new HmsSuccessListener<IsEnvReadyResult> ((result) =>

@@ -9,11 +9,6 @@ namespace HuaweiServiceDemo
 {
     public class IAPManager : MonoBehaviour
     {
-        //public Transform btnParent;
-        public GameObject noAds;
-        public GameObject booster;
-        public GameObject pinkColor;
-
 
         public void Initial()
         {
@@ -22,39 +17,30 @@ namespace HuaweiServiceDemo
 
         public void RegistEvent(string text, UnityAction action)
         {
-            //var btnClone = Instantiate(btnPrefab, btnParent);
-            //var btn = btnClone.GetComponent<TestBtn>();
-            //btn.transform.localPosition = new Vector3(10, start - space * index, 0);
-            //btn.Init(text, action);
-            //index++;
+           
             Debug.Log("[HMS TEXT]" + text);
 
-            //if (text == "obtain Consumables Product Info")
-            //{
-            //    Debug.Log("[HMS crt icinde 1 TEXT]" + text);
-            //    obtainConsumablesProductInfo.GetComponent<TestBtn>().Init(text, action);
-            //    Debug.Log("[HMS crt icinde 2 TEXT]" + text);
-            //    obtainConsumablesProductInfo.GetComponent<Button>().onClick.AddListener(action);
-            //    Debug.Log("[HMS crt icinde 3 TEXT]" + text);
-            //    Debug.Log("[HMS crt icinde 4 TEXT]" + text);
-            //}
-            //else if (text == "obtain Subscription Product Info")
-            //{
-            //    obtainSubscriptionProductInfo.GetComponent<TestBtn>().Init(text, action);
-            //    obtainSubscriptionProductInfo.GetComponent<Button>().onClick.AddListener(action);
-            //}
-            //else if (text == "is env ready")
-            //{
-            //    isenvready.GetComponent<TestBtn>().Init(text, action);
-            //    isenvready.GetComponent<Button>().onClick.AddListener(action);
-            //}
-           
-            //else
-            //{
-            //    Debug.Log("[HMS ELSE TEXT]" + text);
-            //}
+            if (text == "is env ready")
+            {
+                IAPTest.GetInstance().IsEnvReady();
+            }
+            
         }
        
+        public void GetProductInfo(string type)
+        {
+            IAPTest.GetInstance().ObtainProductInfo(type);
+        }
+
+        public void BuyProduct(string type)
+        {
+            IAPTest.GetInstance().CreatePurchaseIntent(type);
+        }
+
+        public void GetPurchaseHistory(string type)
+        {
+            IAPTest.GetInstance().ObtainOwnedPurchaseRecord(type);
+        }
 
     }
 }

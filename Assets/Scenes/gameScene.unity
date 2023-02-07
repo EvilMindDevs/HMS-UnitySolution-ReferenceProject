@@ -3043,7 +3043,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468360481}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 481195949}
+        m_TargetAssemblyTypeName: HuaweiServiceDemo.IAPManager, Assembly-CSharp
+        m_MethodName: BuyProduct
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Non-Consumables
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468360481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3159,9 +3171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018493e0e4c8b4049b3fb6257317f3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noAds: {fileID: 0}
-  booster: {fileID: 0}
-  pinkColor: {fileID: 0}
 --- !u!114 &481195950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6000,7 +6009,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 995372201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 481195949}
+        m_TargetAssemblyTypeName: HuaweiServiceDemo.IAPManager, Assembly-CSharp
+        m_MethodName: BuyProduct
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Subscription
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &995372201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10515,7 +10536,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1511912307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 481195949}
+        m_TargetAssemblyTypeName: HuaweiServiceDemo.IAPManager, Assembly-CSharp
+        m_MethodName: BuyProduct
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Consumables
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1511912307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14353,7 +14386,6 @@ GameObject:
   - component: {fileID: 255945270899115444}
   - component: {fileID: 255945270899115442}
   - component: {fileID: 255945270899115445}
-  - component: {fileID: 255945270899115448}
   m_Layer: 5
   m_Name: Product2
   m_TagString: Untagged
@@ -14361,20 +14393,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &255945270899115448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255945270899115447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0b7030052f6f047bf63306cd643284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  t: {fileID: 84436047}
-  btn: {fileID: 1511912306}
 --- !u!1 &255945270913555777
 GameObject:
   m_ObjectHideFlags: 0
@@ -14386,7 +14404,6 @@ GameObject:
   - component: {fileID: 255945270913555902}
   - component: {fileID: 255945270913555900}
   - component: {fileID: 255945270913555903}
-  - component: {fileID: 255945270913555778}
   m_Layer: 5
   m_Name: Product1
   m_TagString: Untagged
@@ -14394,20 +14411,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &255945270913555778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255945270913555777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0b7030052f6f047bf63306cd643284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  t: {fileID: 525580414}
-  btn: {fileID: 995372200}
 --- !u!222 &255945270913555900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14543,7 +14546,6 @@ GameObject:
   - component: {fileID: 255945271121205594}
   - component: {fileID: 255945271121205592}
   - component: {fileID: 255945271121205595}
-  - component: {fileID: 255945271121205598}
   m_Layer: 5
   m_Name: Product3
   m_TagString: Untagged
@@ -14551,20 +14553,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &255945271121205598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255945271121205597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0b7030052f6f047bf63306cd643284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  t: {fileID: 160929175}
-  btn: {fileID: 468360480}
 --- !u!114 &255945271688924214
 MonoBehaviour:
   m_ObjectHideFlags: 0
