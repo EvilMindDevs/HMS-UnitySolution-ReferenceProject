@@ -14,6 +14,8 @@ The game uses the HMS in-app purchase kit and Ads kit to show a demo of it to ho
 
 Please enjoy and have fun playing Balloon Popping!
 
+This project uses Unity's Asset Store Solution for the kits and made for "Guide to transition, Unity's solution to HMS Unity Plugin". EvilMindDevs are not responsible for the support of Unity's HMS solution.
+
 
 
 
